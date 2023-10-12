@@ -23,18 +23,5 @@ class DatabaseSeeder extends Seeder
         $this->call(CompaniesTableSeeder::class);
         $this->call(JobsTableSeeder::class);
         $this->call(LocationsTableSeeder::class);
-        $this->call(MediaTableSeeder::class);
-        $this->call(MigrationsTableSeeder::class);
-        $this->call(OauthAccessTokensTableSeeder::class);
-        $this->call(OauthAuthCodesTableSeeder::class);
-        $this->call(OauthClientsTableSeeder::class);
-        $this->call(OauthPersonalAccessClientsTableSeeder::class);
-        $this->call(OauthRefreshTokensTableSeeder::class);
-        $this->call(PasswordResetsTableSeeder::class);
-        $this->call(PermissionsTableSeeder::class);
-        $this->call(PermissionRoleTableSeeder::class);
-        $this->call(RolesTableSeeder::class);
-        $this->call(RoleUserTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
     }
 }

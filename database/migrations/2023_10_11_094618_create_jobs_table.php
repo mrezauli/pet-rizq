@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Company;
+use App\Models\Location;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -25,8 +27,8 @@ return new class extends Migration
             $table->string('salary');
             $table->timestamps();
             $table->softDeletes();
-            $table->unsignedInteger('location_id')->index('location_fk_476211');
-            $table->unsignedInteger('company_id')->index('company_fk_476511');
+            $table->foreignIdFor(Company::class)->index();
+            $table->foreignIdFor(Location::class)->index();
         });
     }
 

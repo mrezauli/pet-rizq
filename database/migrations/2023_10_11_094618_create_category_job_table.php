@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Job;
+use App\Models\Category;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -14,8 +16,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('category_job', function (Blueprint $table) {
-            $table->unsignedInteger('job_id')->index('job_id_fk_476513');
-            $table->unsignedInteger('category_id')->index('category_id_fk_476513');
+            $table->foreignIdFor(Category::class)->cascadeOnDelete()->index();
+            $table->foreignIdFor(Job::class)->cascadeOnDelete()->index();
         });
     }
 
