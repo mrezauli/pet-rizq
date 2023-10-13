@@ -34,9 +34,11 @@ class JobResource extends Resource
                     ->required()
                     ->searchable()
                     ->preload(),
-                Forms\Components\TextInput::make('title')
+                Select::make('designation_id')
+                    ->relationship(name: 'designation', titleAttribute: 'title')
                     ->required()
-                    ->maxLength(255),
+                    ->searchable()
+                    ->preload(),
                 Forms\Components\TextInput::make('short_description')
                     ->maxLength(255),
                 Forms\Components\Textarea::make('full_description')
@@ -48,9 +50,11 @@ class JobResource extends Resource
                 Forms\Components\TextInput::make('address')
                     ->maxLength(255),
                 Forms\Components\Toggle::make('top_rated'),
-                Forms\Components\TextInput::make('salary')
+                Select::make('salary_id')
+                    ->relationship(name: 'salary', titleAttribute: 'grade')
                     ->required()
-                    ->maxLength(255),
+                    ->searchable()
+                    ->preload(),
             ]);
     }
 
@@ -62,7 +66,7 @@ class JobResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('company.name')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\TextColumn::make('designation.title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('short_description')
                     ->searchable(),
@@ -72,7 +76,7 @@ class JobResource extends Resource
                     ->searchable(),
                 Tables\Columns\IconColumn::make('top_rated')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('salary')
+                Tables\Columns\TextColumn::make('salary.grade')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

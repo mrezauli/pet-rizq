@@ -8,14 +8,14 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('salaries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->decimal('grade');
+            $table->integer('floor');
+            $table->integer('ceil');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -23,11 +23,9 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('salaries');
     }
 };
