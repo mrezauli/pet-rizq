@@ -8,14 +8,15 @@ namespace App\Models\Base;
 
 use App\Models\Category;
 use App\Models\Job;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class CategoryJob
- * 
+ *
  * @property int $job_id
  * @property int $category_id
- * 
+ *
  * @property Category $category
  * @property Job $job
  *
@@ -23,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class CategoryJob extends Model
 {
+    use HasFactory;
 	protected $table = 'category_job';
 	public $incrementing = false;
 	public $timestamps = false;

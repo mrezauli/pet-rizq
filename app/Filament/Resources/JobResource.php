@@ -49,9 +49,26 @@ class JobResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('address')
                     ->maxLength(255),
+                Forms\Components\TextInput::make('count')
+                    ->numeric(),
                 Forms\Components\Toggle::make('top_rated'),
                 Select::make('salary_id')
                     ->relationship(name: 'salary', titleAttribute: 'grade')
+                    ->required()
+                    ->searchable()
+                    ->preload(),
+                Select::make('age_id')
+                    ->relationship(name: 'age', titleAttribute: 'years')
+                    ->required()
+                    ->searchable()
+                    ->preload(),
+                Select::make('qualification_id')
+                    ->relationship(name: 'qualification', titleAttribute: 'requirements')
+                    ->required()
+                    ->searchable()
+                    ->preload(),
+                Select::make('experience_id')
+                    ->relationship(name: 'experience', titleAttribute: 'requirements')
                     ->required()
                     ->searchable()
                     ->preload(),
@@ -74,9 +91,17 @@ class JobResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('address')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('count')
+                    ->searchable(),
                 Tables\Columns\IconColumn::make('top_rated')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('salary.grade')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('age.years')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('qualification.requirements')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('experience.requirements')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

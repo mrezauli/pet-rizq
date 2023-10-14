@@ -16,6 +16,14 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(9)->create();
         \App\Models\Designation::factory(10)->create();
         \App\Models\Salary::factory(10)->create();
+        \App\Models\Age::factory(10)->create();
+        \App\Models\Qualification::factory(10)->create();
+        \App\Models\Experience::factory(10)->create();
+        \App\Models\Category::factory(10)->create();
+        \App\Models\CategoryJob::factory(10)->create();
+        \App\Models\Company::factory(10)->create();
+        \App\Models\Location::factory(10)->create();
+        \App\Models\Job::factory(10)->create();
 
         \App\Models\User::factory()->create([
             'name' => 'Filament Admin',
@@ -24,10 +32,5 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('Pa$$w0rd!'),
             'remember_token' => Str::random(10),
         ]);
-        $this->call(CategoriesTableSeeder::class);
-        $this->call(CategoryJobTableSeeder::class);
-        $this->call(CompaniesTableSeeder::class);
-        $this->call(JobsTableSeeder::class);
-        $this->call(LocationsTableSeeder::class);
     }
 }

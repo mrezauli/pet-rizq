@@ -7,13 +7,17 @@
 namespace App\Models\Base;
 
 use Carbon\Carbon;
+use App\Models\Age;
+use App\Models\Salary;
 use App\Models\Company;
 use App\Models\Category;
-use App\Models\Designation;
 use App\Models\Location;
-use App\Models\Salary;
+use App\Models\Designation;
+use App\Models\Experience;
+use App\Models\Qualification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -43,7 +47,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Job extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasFactory;
     protected $table = 'jobs';
 
     protected $casts = [
@@ -97,5 +101,35 @@ class Job extends Model
     public function salary(): BelongsTo
     {
         return $this->belongsTo(Salary::class);
+    }
+
+    /**
+     * Get the age that owns the Job
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function age(): BelongsTo
+    {
+        return $this->belongsTo(Age::class);
+    }
+
+    /**
+     * Get the qualification that owns the Job
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function qualification(): BelongsTo
+    {
+        return $this->belongsTo(Qualification::class);
+    }
+
+    /**
+     * Get the experience that owns the Job
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function experience(): BelongsTo
+    {
+        return $this->belongsTo(Experience::class);
     }
 }

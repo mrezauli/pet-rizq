@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CompanyResource\Pages;
-use App\Filament\Resources\CompanyResource\RelationManagers;
-use App\Models\Company;
+use App\Filament\Resources\AgeResource\Pages;
+use App\Filament\Resources\AgeResource\RelationManagers;
+use App\Models\Age;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CompanyResource extends Resource
+class AgeResource extends Resource
 {
-    protected static ?string $model = Company::class;
+    protected static ?string $model = Age::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,12 +23,9 @@ class CompanyResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('years')
                     ->required()
-                    ->maxLength(255),
-                    Forms\Components\TextInput::make('url')
-                    ->required()
-                    ->maxLength(255),
+                    ->numeric(),
             ]);
     }
 
@@ -36,10 +33,9 @@ class CompanyResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('url')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('years')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -67,24 +63,24 @@ class CompanyResource extends Resource
                 ]),
             ]);
     }
-
+    
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCompanies::route('/'),
-            'create' => Pages\CreateCompany::route('/create'),
-            'view' => Pages\ViewCompany::route('/{record}'),
-            'edit' => Pages\EditCompany::route('/{record}/edit'),
+            'index' => Pages\ListAges::route('/'),
+            'create' => Pages\CreateAge::route('/create'),
+            'view' => Pages\ViewAge::route('/{record}'),
+            'edit' => Pages\EditAge::route('/{record}/edit'),
         ];
-    }
-
+    }    
+    
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

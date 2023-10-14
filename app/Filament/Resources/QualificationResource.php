@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CompanyResource\Pages;
-use App\Filament\Resources\CompanyResource\RelationManagers;
-use App\Models\Company;
+use App\Filament\Resources\QualificationResource\Pages;
+use App\Filament\Resources\QualificationResource\RelationManagers;
+use App\Models\Qualification;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CompanyResource extends Resource
+class QualificationResource extends Resource
 {
-    protected static ?string $model = Company::class;
+    protected static ?string $model = Qualification::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,10 +23,7 @@ class CompanyResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                    Forms\Components\TextInput::make('url')
+                Forms\Components\TextInput::make('requirements')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -36,9 +33,7 @@ class CompanyResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('url')
+                Tables\Columns\TextColumn::make('requirements')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -67,24 +62,24 @@ class CompanyResource extends Resource
                 ]),
             ]);
     }
-
+    
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCompanies::route('/'),
-            'create' => Pages\CreateCompany::route('/create'),
-            'view' => Pages\ViewCompany::route('/{record}'),
-            'edit' => Pages\EditCompany::route('/{record}/edit'),
+            'index' => Pages\ListQualifications::route('/'),
+            'create' => Pages\CreateQualification::route('/create'),
+            'view' => Pages\ViewQualification::route('/{record}'),
+            'edit' => Pages\EditQualification::route('/{record}/edit'),
         ];
-    }
-
+    }    
+    
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
