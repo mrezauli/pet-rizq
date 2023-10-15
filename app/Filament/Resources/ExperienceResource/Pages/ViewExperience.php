@@ -10,6 +10,11 @@ class ViewExperience extends ViewRecord
 {
     protected static string $resource = ExperienceResource::class;
 
+    /**
+     * @return Actions\EditAction[]
+     *
+     * @psalm-return list{Actions\EditAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

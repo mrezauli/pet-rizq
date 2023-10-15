@@ -12,7 +12,9 @@ class JobFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return (bool|int|string)[]
+     *
+     * @psalm-return array{short_description: string, full_description: string, requirements: string, job_nature: string, address: string, top_rated: bool, count: int, location_id: int<1, 10>, company_id: int<1, 10>, designation_id: int<1, 10>, salary_id: int<1, 10>, age_id: int<1, 10>, qualification_id: int<1, 10>, experience_id: int<1, 10>}
      */
     public function definition(): array
     {

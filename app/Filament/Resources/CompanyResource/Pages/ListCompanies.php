@@ -10,6 +10,11 @@ class ListCompanies extends ListRecords
 {
     protected static string $resource = CompanyResource::class;
 
+    /**
+     * @return Actions\CreateAction[]
+     *
+     * @psalm-return list{Actions\CreateAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

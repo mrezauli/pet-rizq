@@ -12,7 +12,9 @@ class SalaryFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return int[]
+     *
+     * @psalm-return array{grade: int, floor: int, ceil: int}
      */
     public function definition(): array
     {

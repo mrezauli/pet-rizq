@@ -2,9 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\Base\Company as BaseCompany;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Company extends BaseCompany
+class Company extends Model
 {
+    use HasFactory;
+    use SoftDeletes;
 
+    /**
+     * Get all of the jobs for the Company
+     *
+     * @psalm-return HasMany<Job>
+     */
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class);
+    }
 }

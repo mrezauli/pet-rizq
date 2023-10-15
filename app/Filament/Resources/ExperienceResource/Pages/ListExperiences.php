@@ -10,6 +10,11 @@ class ListExperiences extends ListRecords
 {
     protected static string $resource = ExperienceResource::class;
 
+    /**
+     * @return Actions\CreateAction[]
+     *
+     * @psalm-return list{Actions\CreateAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

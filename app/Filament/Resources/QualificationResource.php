@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\QualificationResource\Pages;
-use App\Filament\Resources\QualificationResource\RelationManagers;
 use App\Models\Qualification;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -19,6 +18,9 @@ class QualificationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    /**
+     * @return Form
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -29,6 +31,9 @@ class QualificationResource extends Resource
             ]);
     }
 
+    /**
+     * @return Table
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -62,14 +67,24 @@ class QualificationResource extends Resource
                 ]),
             ]);
     }
-    
+
+    /**
+     * @return array
+     *
+     * @psalm-return array<never, never>
+     */
     public static function getRelations(): array
     {
         return [
-            //
+
         ];
     }
-    
+
+    /**
+     * @return \Filament\Resources\Pages\PageRegistration[]
+     *
+     * @psalm-return array{index: \Filament\Resources\Pages\PageRegistration, create: \Filament\Resources\Pages\PageRegistration, view: \Filament\Resources\Pages\PageRegistration, edit: \Filament\Resources\Pages\PageRegistration}
+     */
     public static function getPages(): array
     {
         return [
@@ -78,8 +93,11 @@ class QualificationResource extends Resource
             'view' => Pages\ViewQualification::route('/{record}'),
             'edit' => Pages\EditQualification::route('/{record}/edit'),
         ];
-    }    
-    
+    }
+
+    /**
+     * @return Builder
+     */
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

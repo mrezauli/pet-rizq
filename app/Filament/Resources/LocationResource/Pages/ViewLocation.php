@@ -10,6 +10,11 @@ class ViewLocation extends ViewRecord
 {
     protected static string $resource = LocationResource::class;
 
+    /**
+     * @return Actions\EditAction[]
+     *
+     * @psalm-return list{Actions\EditAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

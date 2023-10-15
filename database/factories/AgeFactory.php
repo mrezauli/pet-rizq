@@ -12,7 +12,9 @@ class AgeFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return int[]
+     *
+     * @psalm-return array{years: int<18, 60>}
      */
     public function definition(): array
     {

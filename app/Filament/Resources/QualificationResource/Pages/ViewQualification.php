@@ -10,6 +10,11 @@ class ViewQualification extends ViewRecord
 {
     protected static string $resource = QualificationResource::class;
 
+    /**
+     * @return Actions\EditAction[]
+     *
+     * @psalm-return list{Actions\EditAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

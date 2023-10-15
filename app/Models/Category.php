@@ -2,9 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\Base\Category as BaseCategory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Category extends BaseCategory
+class Category extends Model
 {
+    use HasFactory;
+    use SoftDeletes;
 
+    /**
+     * The jobs that belong to the Category
+     *
+     * @psalm-return BelongsToMany<Job>
+     */
+    public function jobs(): BelongsToMany
+    {
+        return $this->belongsToMany(Job::class);
+    }
 }

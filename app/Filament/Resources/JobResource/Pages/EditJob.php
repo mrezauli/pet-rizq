@@ -10,6 +10,11 @@ class EditJob extends EditRecord
 {
     protected static string $resource = JobResource::class;
 
+    /**
+     * @return (Actions\DeleteAction|Actions\ForceDeleteAction|Actions\RestoreAction|Actions\ViewAction)[]
+     *
+     * @psalm-return list{Actions\ViewAction, Actions\DeleteAction, Actions\ForceDeleteAction, Actions\RestoreAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

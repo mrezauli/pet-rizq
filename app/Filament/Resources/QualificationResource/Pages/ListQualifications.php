@@ -10,6 +10,11 @@ class ListQualifications extends ListRecords
 {
     protected static string $resource = QualificationResource::class;
 
+    /**
+     * @return Actions\CreateAction[]
+     *
+     * @psalm-return list{Actions\CreateAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

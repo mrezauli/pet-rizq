@@ -2,9 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\Base\Location as BaseLocation;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Location extends BaseLocation
+class Location extends Model
 {
+    use HasFactory;
+    use SoftDeletes;
 
+    /**
+     * Get all of the jobs for the Location
+     *
+     * @psalm-return HasMany<Job>
+     */
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class);
+    }
 }

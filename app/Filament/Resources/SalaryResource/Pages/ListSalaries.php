@@ -10,6 +10,11 @@ class ListSalaries extends ListRecords
 {
     protected static string $resource = SalaryResource::class;
 
+    /**
+     * @return Actions\CreateAction[]
+     *
+     * @psalm-return list{Actions\CreateAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

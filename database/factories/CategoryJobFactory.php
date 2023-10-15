@@ -12,7 +12,9 @@ class CategoryJobFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return int[]
+     *
+     * @psalm-return array{job_id: int<1, 10>, category_id: int<1, 10>}
      */
     public function definition(): array
     {

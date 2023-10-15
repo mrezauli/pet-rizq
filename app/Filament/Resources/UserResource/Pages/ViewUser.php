@@ -10,6 +10,11 @@ class ViewUser extends ViewRecord
 {
     protected static string $resource = UserResource::class;
 
+    /**
+     * @return Actions\EditAction[]
+     *
+     * @psalm-return list{Actions\EditAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

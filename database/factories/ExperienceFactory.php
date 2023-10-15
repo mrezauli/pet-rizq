@@ -12,7 +12,9 @@ class ExperienceFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return string[]
+     *
+     * @psalm-return array{requirements: string}
      */
     public function definition(): array
     {

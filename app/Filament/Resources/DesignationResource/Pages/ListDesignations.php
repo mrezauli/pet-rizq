@@ -10,6 +10,11 @@ class ListDesignations extends ListRecords
 {
     protected static string $resource = DesignationResource::class;
 
+    /**
+     * @return Actions\CreateAction[]
+     *
+     * @psalm-return list{Actions\CreateAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

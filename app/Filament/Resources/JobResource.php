@@ -2,17 +2,16 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\JobResource\Pages;
 use App\Models\Job;
 use Filament\Forms;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\JobResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\JobResource\RelationManagers;
 
 class JobResource extends Resource
 {
@@ -20,6 +19,9 @@ class JobResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    /**
+     * @return Form
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -75,6 +77,9 @@ class JobResource extends Resource
             ]);
     }
 
+    /**
+     * @return Table
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -131,13 +136,23 @@ class JobResource extends Resource
             ]);
     }
 
+    /**
+     * @return array
+     *
+     * @psalm-return array<never, never>
+     */
     public static function getRelations(): array
     {
         return [
-            //
+
         ];
     }
 
+    /**
+     * @return \Filament\Resources\Pages\PageRegistration[]
+     *
+     * @psalm-return array{index: \Filament\Resources\Pages\PageRegistration, create: \Filament\Resources\Pages\PageRegistration, view: \Filament\Resources\Pages\PageRegistration, edit: \Filament\Resources\Pages\PageRegistration}
+     */
     public static function getPages(): array
     {
         return [
@@ -148,6 +163,9 @@ class JobResource extends Resource
         ];
     }
 
+    /**
+     * @return Builder
+     */
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

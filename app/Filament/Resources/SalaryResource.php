@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SalaryResource\Pages;
-use App\Filament\Resources\SalaryResource\RelationManagers;
 use App\Models\Salary;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -19,6 +18,9 @@ class SalaryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    /**
+     * @return Form
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -35,6 +37,9 @@ class SalaryResource extends Resource
             ]);
     }
 
+    /**
+     * @return Table
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -75,14 +80,24 @@ class SalaryResource extends Resource
                 ]),
             ]);
     }
-    
+
+    /**
+     * @return array
+     *
+     * @psalm-return array<never, never>
+     */
     public static function getRelations(): array
     {
         return [
-            //
+
         ];
     }
-    
+
+    /**
+     * @return \Filament\Resources\Pages\PageRegistration[]
+     *
+     * @psalm-return array{index: \Filament\Resources\Pages\PageRegistration, create: \Filament\Resources\Pages\PageRegistration, view: \Filament\Resources\Pages\PageRegistration, edit: \Filament\Resources\Pages\PageRegistration}
+     */
     public static function getPages(): array
     {
         return [
@@ -91,8 +106,11 @@ class SalaryResource extends Resource
             'view' => Pages\ViewSalary::route('/{record}'),
             'edit' => Pages\EditSalary::route('/{record}/edit'),
         ];
-    }    
-    
+    }
+
+    /**
+     * @return Builder
+     */
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

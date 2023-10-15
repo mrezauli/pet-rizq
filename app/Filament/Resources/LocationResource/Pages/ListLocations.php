@@ -10,6 +10,11 @@ class ListLocations extends ListRecords
 {
     protected static string $resource = LocationResource::class;
 
+    /**
+     * @return Actions\CreateAction[]
+     *
+     * @psalm-return list{Actions\CreateAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

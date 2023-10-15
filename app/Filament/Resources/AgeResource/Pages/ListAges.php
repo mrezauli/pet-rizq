@@ -10,6 +10,11 @@ class ListAges extends ListRecords
 {
     protected static string $resource = AgeResource::class;
 
+    /**
+     * @return Actions\CreateAction[]
+     *
+     * @psalm-return list{Actions\CreateAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

@@ -12,7 +12,9 @@ class DesignationFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return string[]
+     *
+     * @psalm-return array{title: string}
      */
     public function definition(): array
     {

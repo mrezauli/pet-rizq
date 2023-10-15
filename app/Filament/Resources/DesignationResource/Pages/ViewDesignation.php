@@ -10,6 +10,11 @@ class ViewDesignation extends ViewRecord
 {
     protected static string $resource = DesignationResource::class;
 
+    /**
+     * @return Actions\EditAction[]
+     *
+     * @psalm-return list{Actions\EditAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

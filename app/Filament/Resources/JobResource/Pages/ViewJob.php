@@ -10,6 +10,11 @@ class ViewJob extends ViewRecord
 {
     protected static string $resource = JobResource::class;
 
+    /**
+     * @return Actions\EditAction[]
+     *
+     * @psalm-return list{Actions\EditAction}
+     */
     protected function getHeaderActions(): array
     {
         return [

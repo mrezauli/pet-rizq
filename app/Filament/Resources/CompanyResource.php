@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CompanyResource\Pages;
-use App\Filament\Resources\CompanyResource\RelationManagers;
 use App\Models\Company;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -19,6 +18,9 @@ class CompanyResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    /**
+     * @return Form
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -26,12 +28,15 @@ class CompanyResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\TextInput::make('url')
+                Forms\Components\TextInput::make('url')
                     ->required()
                     ->maxLength(255),
             ]);
     }
 
+    /**
+     * @return Table
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -68,13 +73,23 @@ class CompanyResource extends Resource
             ]);
     }
 
+    /**
+     * @return array
+     *
+     * @psalm-return array<never, never>
+     */
     public static function getRelations(): array
     {
         return [
-            //
+
         ];
     }
 
+    /**
+     * @return \Filament\Resources\Pages\PageRegistration[]
+     *
+     * @psalm-return array{index: \Filament\Resources\Pages\PageRegistration, create: \Filament\Resources\Pages\PageRegistration, view: \Filament\Resources\Pages\PageRegistration, edit: \Filament\Resources\Pages\PageRegistration}
+     */
     public static function getPages(): array
     {
         return [
@@ -85,6 +100,9 @@ class CompanyResource extends Resource
         ];
     }
 
+    /**
+     * @return Builder
+     */
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

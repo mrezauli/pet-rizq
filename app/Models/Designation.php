@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Designation extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
-    public function jobs()
-	{
-		return $this->hasMany(Job::class);
-	}
+    /**
+     * @psalm-return \Illuminate\Database\Eloquent\Relations\HasMany<Job>
+     */
+    public function jobs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Job::class);
+    }
 }

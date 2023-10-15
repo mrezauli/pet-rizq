@@ -10,6 +10,11 @@ class ListCategories extends ListRecords
 {
     protected static string $resource = CategoryResource::class;
 
+    /**
+     * @return Actions\CreateAction[]
+     *
+     * @psalm-return list{Actions\CreateAction}
+     */
     protected function getHeaderActions(): array
     {
         return [
