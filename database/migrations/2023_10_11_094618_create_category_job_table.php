@@ -18,6 +18,7 @@ return new class extends Migration
         Schema::create('category_job', function (Blueprint $table) {
             $table->foreignIdFor(Category::class)->cascadeOnDelete()->index();
             $table->foreignIdFor(Job::class)->cascadeOnDelete()->index();
+            $table->timestamps();
         });
     }
 

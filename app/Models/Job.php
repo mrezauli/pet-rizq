@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Time;
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class Job extends Model
 {
@@ -104,5 +107,13 @@ class Job extends Model
     public function experience(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Experience::class);
+    }
+
+    /**
+     * Get the car's owner.
+     */
+    public function companyTime(): HasOneThrough
+    {
+        return $this->hasOneThrough(Time::class, Company::class);
     }
 }
