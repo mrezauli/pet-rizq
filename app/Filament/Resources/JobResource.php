@@ -86,6 +86,8 @@ class JobResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('location.name')
                     ->sortable(),
+                    Tables\Columns\TextColumn::make('companytime.opening')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('company.name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('designation.title')

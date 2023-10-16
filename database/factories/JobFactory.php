@@ -33,6 +33,7 @@ class JobFactory extends Factory
             'age_id' => rand(1, 10),
             'qualification_id' => rand(1, 10),
             'experience_id' => rand(1, 10),
+            'time_id' => rand(1, 10),
         ];
     }
 }

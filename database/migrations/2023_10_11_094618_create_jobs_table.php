@@ -7,6 +7,7 @@ use App\Models\Experience;
 use App\Models\Location;
 use App\Models\Qualification;
 use App\Models\Salary;
+use App\Models\Time;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -38,6 +39,7 @@ return new class extends Migration
             $table->foreignIdFor(Age::class)->index();
             $table->foreignIdFor(Qualification::class)->index();
             $table->foreignIdFor(Experience::class)->index();
+            $table->foreignIdFor(Time::class)->index();
         });
     }
 
