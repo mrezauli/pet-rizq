@@ -14,7 +14,6 @@ return new class extends Migration
     {
         Schema::create('times', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Company::class);
             $table->dateTime('opening');
             $table->dateTime('closing');
             $table->timestamps();

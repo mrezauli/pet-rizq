@@ -6,6 +6,7 @@ use App\Models\Time;
 use App\Models\Company;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
@@ -14,6 +15,8 @@ class Job extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable = ['short_description', 'full_description', 'requirements', 'job_nature', 'address', 'top_rated', 'count', 'company_id', 'location_id', 'designation_id', 'salary_id', 'age_id', 'qualification_id', 'experience_id', 'time_id'];
 
     /**
      * Get the company that owns the Job
@@ -110,10 +113,12 @@ class Job extends Model
     }
 
     /**
-     * Get the car's owner.
+     * Get the time that owns the Job
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function companyTime(): HasOneThrough
+    public function time(): BelongsTo
     {
-        return $this->hasOneThrough(Time::class, Company::class);
+        return $this->belongsTo(Time::class);
     }
 }

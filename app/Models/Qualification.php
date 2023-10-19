@@ -12,6 +12,8 @@ class Qualification extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = ['requirements'];
+
     /**
      * Get all of the jobs for the Qualification
      *

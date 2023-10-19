@@ -12,6 +12,8 @@ class CategoryJob extends Pivot
 {
     use HasFactory;
 
+    protected $fillable = ['category_id', 'job_id'];
+
     /**
      * Get the category that owns the CategoryJob
      *

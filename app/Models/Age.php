@@ -12,6 +12,8 @@ class Age extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = ['years'];
+
     /**
      * Get all of the jobs for the Age
      *

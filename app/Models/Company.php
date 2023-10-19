@@ -12,6 +12,8 @@ class Company extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = ['name', 'url'];
+
     /**
      * Get all of the jobs for the Company
      *

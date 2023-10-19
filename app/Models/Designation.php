@@ -11,6 +11,8 @@ class Designation extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = ['title'];
+
     /**
      * @psalm-return \Illuminate\Database\Eloquent\Relations\HasMany<Job>
      */

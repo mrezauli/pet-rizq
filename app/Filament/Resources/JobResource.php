@@ -41,19 +41,6 @@ class JobResource extends Resource
                     ->required()
                     ->searchable()
                     ->preload(),
-                Forms\Components\TextInput::make('short_description')
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('full_description')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('requirements')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('job_nature')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('address')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('count')
-                    ->numeric(),
-                Forms\Components\Toggle::make('top_rated'),
                 Select::make('salary_id')
                     ->relationship(name: 'salary', titleAttribute: 'grade')
                     ->required()
@@ -74,6 +61,24 @@ class JobResource extends Resource
                     ->required()
                     ->searchable()
                     ->preload(),
+                Select::make('time_id')
+                    ->relationship(name: 'time', titleAttribute: 'opening')
+                    ->required()
+                    ->searchable()
+                    ->preload(),
+                Forms\Components\TextInput::make('short_description')
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('full_description')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('requirements')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('job_nature')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('address')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('count')
+                    ->numeric(),
+                Forms\Components\Toggle::make('top_rated'),
             ]);
     }
 
@@ -86,7 +91,7 @@ class JobResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('location.name')
                     ->sortable(),
-                    Tables\Columns\TextColumn::make('companytime.opening')
+                Tables\Columns\TextColumn::make('time.opening')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('company.name')
                     ->sortable(),
@@ -145,9 +150,7 @@ class JobResource extends Resource
      */
     public static function getRelations(): array
     {
-        return [
-
-        ];
+        return [];
     }
 
     /**

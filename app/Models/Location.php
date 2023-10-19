@@ -12,6 +12,8 @@ class Location extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = ['name'];
+
     /**
      * Get all of the jobs for the Location
      *

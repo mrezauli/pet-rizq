@@ -27,7 +27,6 @@ class TimeFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_id' => rand(1, 10),
             'opening' => fake()->dateTime(),
             'closing' => fake()->dateTime(),
         ];

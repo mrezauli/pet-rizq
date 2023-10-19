@@ -12,6 +12,8 @@ class Salary extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = ['grade', 'floor', 'ceil'];
+
     /**
      * Get all of the jobs for the Salary
      *
