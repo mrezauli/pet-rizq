@@ -8,6 +8,7 @@ use App\Models\Location;
 use App\Models\Qualification;
 use App\Models\Salary;
 use App\Models\Time;
+use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -30,6 +31,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->boolean('top_rated')->nullable()->default(false);
             $table->integer('count');
+            $table->integer('fee');
             $table->timestamps();
             $table->softDeletes();
             $table->foreignIdFor(Company::class)->index();
@@ -40,6 +42,7 @@ return new class extends Migration
             $table->foreignIdFor(Qualification::class)->index();
             $table->foreignIdFor(Experience::class)->index();
             $table->foreignIdFor(Time::class)->index();
+            $table->foreignIdFor(Media::class)->index();
         });
     }
 

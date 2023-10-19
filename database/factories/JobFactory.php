@@ -26,6 +26,7 @@ class JobFactory extends Factory
             'address' => fake()->address(),
             'top_rated' => fake()->boolean(),
             'count' => fake()->randomNumber(3),
+            'fee' => fake()->randomNumber(6),
             'location_id' => rand(1, 10),
             'company_id' => rand(1, 10),
             'designation_id' => rand(1, 10),
@@ -34,6 +35,7 @@ class JobFactory extends Factory
             'qualification_id' => rand(1, 10),
             'experience_id' => rand(1, 10),
             'time_id' => rand(1, 10),
+            'media_id' => rand(1, 10),
         ];
     }
 }

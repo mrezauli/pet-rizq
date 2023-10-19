@@ -2,22 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\JobResource\Pages;
 use App\Models\Job;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\JobResource\Pages;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 
 class JobResource extends Resource
 {
     protected static ?string $model = Job::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     /**
      * @return Form
@@ -66,6 +68,8 @@ class JobResource extends Resource
                     ->required()
                     ->searchable()
                     ->preload(),
+                CuratorPicker::make('media_id')
+                    ->relationship('media', 'id'),
                 Forms\Components\TextInput::make('short_description')
                     ->maxLength(255),
                 Forms\Components\Textarea::make('full_description')
@@ -78,6 +82,8 @@ class JobResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('count')
                     ->numeric(),
+                Forms\Components\TextInput::make('fee')
+                    ->numeric(),
                 Forms\Components\Toggle::make('top_rated'),
             ]);
     }
@@ -89,24 +95,12 @@ class JobResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('location.name')
+                Tables\Columns\TextColumn::make('location.name'),
+                Tables\Columns\TextColumn::make('time.closing')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('time.opening')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('company.name')
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('company.name'),
                 Tables\Columns\TextColumn::make('designation.title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('short_description')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('job_nature')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('address')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('count')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('top_rated')
-                    ->boolean(),
                 Tables\Columns\TextColumn::make('salary.grade')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('age.years')
@@ -115,6 +109,20 @@ class JobResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('experience.requirements')
                     ->searchable(),
+                CuratorColumn::make('media')
+                    ->size(40),
+                Tables\Columns\TextColumn::make('short_description')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('job_nature')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('address')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('count')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('fee')
+                    ->searchable(),
+                Tables\Columns\IconColumn::make('top_rated')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

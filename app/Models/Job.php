@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Time;
 use App\Models\Company;
+use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,7 +17,7 @@ class Job extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['short_description', 'full_description', 'requirements', 'job_nature', 'address', 'top_rated', 'count', 'company_id', 'location_id', 'designation_id', 'salary_id', 'age_id', 'qualification_id', 'experience_id', 'time_id'];
+    protected $fillable = ['short_description', 'full_description', 'requirements', 'job_nature', 'address', 'top_rated', 'count', 'company_id', 'location_id', 'designation_id', 'salary_id', 'age_id', 'qualification_id', 'experience_id', 'time_id', 'media_id'];
 
     /**
      * Get the company that owns the Job
@@ -120,5 +121,10 @@ class Job extends Model
     public function time(): BelongsTo
     {
         return $this->belongsTo(Time::class);
+    }
+
+    public function media(): BelongsTo
+    {
+        return $this->belongsTo(Media::class);
     }
 }

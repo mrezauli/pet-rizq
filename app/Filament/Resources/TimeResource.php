@@ -17,7 +17,7 @@ class TimeResource extends Resource
 {
     protected static ?string $model = Time::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clock';
 
     public static function form(Form $form): Form
     {
@@ -67,14 +67,14 @@ class TimeResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -83,8 +83,8 @@ class TimeResource extends Resource
             'view' => Pages\ViewTime::route('/{record}'),
             'edit' => Pages\EditTime::route('/{record}/edit'),
         ];
-    }    
-    
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
