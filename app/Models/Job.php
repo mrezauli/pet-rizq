@@ -17,7 +17,7 @@ class Job extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['short_description', 'full_description', 'requirements', 'job_nature', 'address', 'top_rated', 'count', 'company_id', 'location_id', 'designation_id', 'salary_id', 'age_id', 'qualification_id', 'experience_id', 'time_id', 'media_id'];
+    protected $fillable = ['short_description', 'full_description', 'requirements', 'job_nature', 'address', 'top_rated', 'count', 'fee', 'company_id', 'location_id', 'designation_id', 'salary_id', 'age_id', 'qualification_id', 'experience_id', 'time_id', 'media_id'];
 
     /**
      * Get the company that owns the Job
