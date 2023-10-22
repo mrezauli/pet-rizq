@@ -29,7 +29,7 @@ class ExamineePanelProvider extends PanelProvider
                 'primary' => Color::Sky,
             ])
             ->maxContentWidth('full')
-            ->favicon(asset('images/favicon.png'))
+            ->favicon(asset('favicon.ico'))
             ->discoverResources(in: app_path('Filament/Examinee/Resources'), for: 'App\\Filament\\Examinee\\Resources')
             ->discoverPages(in: app_path('Filament/Examinee/Pages'), for: 'App\\Filament\\Examinee\\Pages')
             ->pages([
