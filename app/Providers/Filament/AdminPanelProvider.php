@@ -70,7 +70,6 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationGroup('Content')
                     ->navigationSort(3)
                     ->navigationCountBadge()
-            ])
-            ;
+            ]);
     }
 }

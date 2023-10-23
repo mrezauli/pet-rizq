@@ -24,12 +24,17 @@ class ExamineePanelProvider extends PanelProvider
     {
         return $panel
             ->id('examinee')
-            ->path('candidate')
+            ->path('examinee')
+            ->login()
+            ->registration()
+            ->passwordReset()
+            ->emailVerification()
+            ->profile()
             ->colors([
                 'primary' => Color::Sky,
             ])
             ->maxContentWidth('full')
-            ->favicon(asset('favicon.ico'))
+            ->favicon(asset('img/favicon.ico'))
             ->discoverResources(in: app_path('Filament/Examinee/Resources'), for: 'App\\Filament\\Examinee\\Resources')
             ->discoverPages(in: app_path('Filament/Examinee/Pages'), for: 'App\\Filament\\Examinee\\Pages')
             ->pages([
