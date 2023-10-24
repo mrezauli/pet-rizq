@@ -2,17 +2,18 @@
 
 namespace App\Filament\Examinee\Resources;
 
-use App\Filament\Examinee\Resources\JobResource\Pages;
-use App\Filament\Examinee\Resources\JobResource\RelationManagers;
 use App\Models\Job;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\Layout\Split;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Tables\Columns\Layout\Grid;
+use Filament\Tables\Columns\Layout\Split;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Examinee\Resources\JobResource\Pages;
+use App\Filament\Examinee\Resources\JobResource\RelationManagers;
 
 class JobResource extends Resource
 {
@@ -75,63 +76,45 @@ class JobResource extends Resource
     {
         return $table
             ->contentGrid([
-                'md' => 2,
-                'xl' => 3,
+                'md' => 1,
+                'xl' => 2,
             ])
             ->columns([
-                Tables\Columns\TextColumn::make('short_description')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('job_nature')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('address')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('top_rated')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('count')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('fee')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('company.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('location.name')
-
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('designation.title')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('salary.id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('age.id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('qualification.id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('experience.id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('time.id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('media.name')
-                    ->numeric()
-                    ->sortable(),
+                Grid::make([
+                    'md' => 1,
+                    'xl' => 2,
+                ])->schema([
+                    Tables\Columns\TextColumn::make('short_description')
+                        ->searchable(),
+                    Tables\Columns\TextColumn::make('job_nature')
+                        ->searchable(),
+                    Tables\Columns\TextColumn::make('address')
+                        ->searchable(),
+                    Tables\Columns\IconColumn::make('top_rated')
+                        ->boolean(),
+                    Tables\Columns\TextColumn::make('count')
+                        ->numeric()
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('fee')
+                        ->numeric()
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('company.name')
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('location.name')
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('designation.title')
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('salary.grade')
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('age.years')
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('qualification.requirements')
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('experience.requirements')
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('time.closing')
+                        ->sortable(),
+                ])
             ])
             ->filters([
                 //
