@@ -74,62 +74,64 @@ class JobResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->contentGrid([
+                'md' => 2,
+                'xl' => 3,
+            ])
             ->columns([
-                Split::make([
-                    Tables\Columns\TextColumn::make('short_description')
-                        ->searchable(),
-                    Tables\Columns\TextColumn::make('job_nature')
-                        ->searchable(),
-                    Tables\Columns\TextColumn::make('address')
-                        ->searchable(),
-                    Tables\Columns\IconColumn::make('top_rated')
-                        ->boolean(),
-                    Tables\Columns\TextColumn::make('count')
-                        ->numeric()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('fee')
-                        ->numeric()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('created_at')
-                        ->dateTime()
-                        ->sortable()
-                        ->toggleable(isToggledHiddenByDefault: true),
-                    Tables\Columns\TextColumn::make('updated_at')
-                        ->dateTime()
-                        ->sortable()
-                        ->toggleable(isToggledHiddenByDefault: true),
-                    Tables\Columns\TextColumn::make('deleted_at')
-                        ->dateTime()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('company.name')
-                        ->numeric()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('location.name')
+                Tables\Columns\TextColumn::make('short_description')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('job_nature')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('address')
+                    ->searchable(),
+                Tables\Columns\IconColumn::make('top_rated')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('count')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('fee')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('deleted_at')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('company.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('location.name')
 
-                        ->numeric()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('designation.title')
-                        ->numeric()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('salary.id')
-                        ->numeric()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('age.id')
-                        ->numeric()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('qualification.id')
-                        ->numeric()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('experience.id')
-                        ->numeric()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('time.id')
-                        ->numeric()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('media.name')
-                        ->numeric()
-                        ->sortable(),
-                ])
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('designation.title')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('salary.id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('age.id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('qualification.id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('experience.id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('time.id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('media.name')
+                    ->numeric()
+                    ->sortable(),
             ])
             ->filters([
                 //
