@@ -7,6 +7,7 @@ use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Shanerbaner82\PanelRoles\PanelRoles;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -69,7 +70,10 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationIcon('heroicon-o-photo')
                     ->navigationGroup('Content')
                     ->navigationSort(3)
-                    ->navigationCountBadge()
+                    ->navigationCountBadge(),
+                PanelRoles::make()
+                    ->roleToAssign('admin')
+                    ->restrictedRoles(['examinee']),
             ]);
     }
 }
