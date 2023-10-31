@@ -88,9 +88,9 @@ class Kernel extends HttpKernel
         \Illuminate\Routing\Middleware\ThrottleRequests::class,
         \Illuminate\Routing\Middleware\ThrottleRequestsWithRedis::class,
         \Illuminate\Contracts\Session\Middleware\AuthenticatesSessions::class,
-        \Spatie\Permission\Middlewares\RoleMiddleware::class,
-        \Spatie\Permission\Middlewares\PermissionMiddleware::class,
-        \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+        RoleMiddleware::class,
+        PermissionMiddleware::class,
+        RoleOrPermissionMiddleware::class,
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,
     ];

@@ -5,12 +5,15 @@ namespace App\Filament\Examinee\Resources;
 use App\Models\Job;
 use Filament\Forms;
 use Filament\Tables;
+use Filament\Infolists;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables\Columns\Layout\Grid;
 use Filament\Tables\Columns\Layout\Split;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Infolists\Components\ImageEntry;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Examinee\Resources\JobResource\Pages;
 use App\Filament\Examinee\Resources\JobResource\RelationManagers;
@@ -124,6 +127,29 @@ class JobResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([]),
+            ]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Infolists\Components\TextEntry::make('short_description'),
+                ImageEntry::make('media.name'),
+                Infolists\Components\TextEntry::make('job_nature'),
+                Infolists\Components\IconEntry::make('top_rated')->boolean(),
+                Infolists\Components\TextEntry::make('count'),
+                Infolists\Components\TextEntry::make('fee'),
+                Infolists\Components\TextEntry::make('company.name'),
+                Infolists\Components\TextEntry::make('location.name'),
+                Infolists\Components\TextEntry::make('designation.title'),
+                Infolists\Components\TextEntry::make('location.name'),
+                Infolists\Components\TextEntry::make('salary.grade'),
+                Infolists\Components\TextEntry::make('age.years'),
+                Infolists\Components\TextEntry::make('qualification.requirements'),
+                Infolists\Components\TextEntry::make('experience.requirements'),
+                Infolists\Components\TextEntry::make('address')
+                    ->columnSpanFull(),
             ]);
     }
 
