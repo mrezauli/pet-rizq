@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+use App\Policies\ActivityPolicy;
+use Spatie\Activitylog\Models\Activity;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +15,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-
+        // Update `Activity::class` with the one defined in `config/activitylog.php`
+        //Activity::class => ActivityPolicy::class,
     ];
 
     /**

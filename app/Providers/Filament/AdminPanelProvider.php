@@ -11,6 +11,7 @@ use Shanerbaner82\PanelRoles\PanelRoles;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -71,9 +72,13 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationGroup('Content')
                     ->navigationSort(3)
                     ->navigationCountBadge(),
-                PanelRoles::make()
-                    ->roleToAssign('admin')
-                    ->restrictedRoles(['examinee']),
+                //FilamentShieldPlugin::make(),
+                // PanelRoles::make()
+                //     ->roleToAssign('admin')
+                //     ->restrictedRoles(['examinee']),
+            ])
+            ->resources([
+                config('filament-logger.activity_resource')
             ]);
     }
 }

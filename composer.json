@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.1",
         "awcodes/filament-curator": "^3.0",
+        "bezhansalleh/filament-shield": "^3.0",
         "filament/filament": "^3.0-stable",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
@@ -17,7 +18,9 @@
         "laravel/tinker": "^2.8",
         "orangehill/iseed": "^3.0",
         "shanerbaner82/panel-roles": "^0.0.3",
-        "spatie/laravel-permission": "^6.0"
+        "spatie/laravel-activitylog": "^4.7",
+        "spatie/laravel-permission": "^5.0",
+        "z3d0x/filament-logger": "^0.6.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",

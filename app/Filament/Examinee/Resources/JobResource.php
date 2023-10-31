@@ -10,13 +10,12 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
+use Illuminate\Support\Facades\Storage;
 use Filament\Tables\Columns\Layout\Grid;
-use Filament\Tables\Columns\Layout\Split;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Infolists\Components\ViewEntry;
 use Filament\Infolists\Components\ImageEntry;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use App\Filament\Examinee\Resources\JobResource\Pages;
-use App\Filament\Examinee\Resources\JobResource\RelationManagers;
 
 class JobResource extends Resource
 {
@@ -28,6 +27,9 @@ class JobResource extends Resource
     {
         return $form
             ->schema([
+                CuratorPicker::make('media_id')
+                    ->relationship('media', 'id')
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('short_description')
                     ->maxLength(255),
                 Forms\Components\Textarea::make('full_description')
@@ -68,9 +70,6 @@ class JobResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('time_id')
                     ->relationship('time', 'id')
-                    ->required(),
-                Forms\Components\Select::make('media_id')
-                    ->relationship('media', 'name')
                     ->required(),
             ]);
     }
@@ -130,28 +129,7 @@ class JobResource extends Resource
             ]);
     }
 
-    public static function infolist(Infolist $infolist): Infolist
-    {
-        return $infolist
-            ->schema([
-                Infolists\Components\TextEntry::make('short_description'),
-                ImageEntry::make('media.name'),
-                Infolists\Components\TextEntry::make('job_nature'),
-                Infolists\Components\IconEntry::make('top_rated')->boolean(),
-                Infolists\Components\TextEntry::make('count'),
-                Infolists\Components\TextEntry::make('fee'),
-                Infolists\Components\TextEntry::make('company.name'),
-                Infolists\Components\TextEntry::make('location.name'),
-                Infolists\Components\TextEntry::make('designation.title'),
-                Infolists\Components\TextEntry::make('location.name'),
-                Infolists\Components\TextEntry::make('salary.grade'),
-                Infolists\Components\TextEntry::make('age.years'),
-                Infolists\Components\TextEntry::make('qualification.requirements'),
-                Infolists\Components\TextEntry::make('experience.requirements'),
-                Infolists\Components\TextEntry::make('address')
-                    ->columnSpanFull(),
-            ]);
-    }
+
 
     public static function getRelations(): array
     {

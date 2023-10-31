@@ -2,9 +2,11 @@
 
 namespace App\Filament\Examinee\Resources\JobResource\Pages;
 
-use App\Filament\Examinee\Resources\JobResource;
 use Filament\Actions;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;
+use Filament\Infolists\Components\TextEntry;
+use App\Filament\Examinee\Resources\JobResource;
 
 class ViewJob extends ViewRecord
 {
