@@ -11,9 +11,13 @@ use Filament\Tables\Table;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Filters\Filter;
+use Filament\Resources\Components\Tab;
 use Illuminate\Support\Facades\Storage;
 use Filament\Tables\Columns\Layout\Grid;
 use Filament\Tables\Enums\ActionsPosition;
+use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Filament\Infolists\Components\ViewEntry;
 use Filament\Infolists\Components\ImageEntry;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -30,19 +34,9 @@ class JobResource extends Resource
         return $form
             ->schema([
                 CuratorPicker::make('media_id')
+                    ->label('Ad')
                     ->relationship('media', 'id')
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('short_description')
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('full_description')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('requirements')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('job_nature')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('address')
-                    ->maxLength(255),
-                Forms\Components\Toggle::make('top_rated'),
                 Forms\Components\TextInput::make('count')
                     ->required()
                     ->numeric(),
@@ -88,14 +82,6 @@ class JobResource extends Resource
                     'md' => 1,
                     'xl' => 2,
                 ])->schema([
-                    Tables\Columns\TextColumn::make('short_description')
-                        ->searchable(),
-                    Tables\Columns\TextColumn::make('job_nature')
-                        ->searchable(),
-                    Tables\Columns\TextColumn::make('address')
-                        ->searchable(),
-                    Tables\Columns\IconColumn::make('top_rated')
-                        ->boolean(),
                     Tables\Columns\TextColumn::make('count')
                         ->numeric()
                         ->sortable(),
@@ -121,7 +107,12 @@ class JobResource extends Resource
                 ])
             ])
             ->filters([
-                //
+                Filter::make('top_rated')
+                    ->query(fn (Builder $query): Builder => $query->where('top_rated', true))
+                    ->toggle(),
+                SelectFilter::make('designation')
+                    ->relationship('designation', 'title')
+                    ->preload()
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
