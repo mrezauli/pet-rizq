@@ -10,8 +10,10 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Storage;
 use Filament\Tables\Columns\Layout\Grid;
+use Filament\Tables\Enums\ActionsPosition;
 use Filament\Infolists\Components\ViewEntry;
 use Filament\Infolists\Components\ImageEntry;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -21,7 +23,7 @@ class JobResource extends Resource
 {
     protected static ?string $model = Job::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     public static function form(Form $form): Form
     {
@@ -123,6 +125,10 @@ class JobResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\Action::make('ad download')
+                    ->url(fn (Job $record): string => route('job.show', $record))
+                    ->color('warning')
+                    ->icon('heroicon-o-arrow-down-tray')
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([]),
