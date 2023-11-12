@@ -24,41 +24,41 @@ class ListJobs extends ListRecords
                 ->icon('heroicon-m-user-group')
                 ->badge(Job::query()->count())
                 ->badgeColor('success'),
-            'Smith-Beatty' => Tab::make()
+            '1st Class' => Tab::make()
                 ->icon('heroicon-m-user-group')
-                ->badge(Job::query()->whereHas('company', function ($query) {
-                    $query->where('name', '=', 'Smith-Beatty');
+                ->badge(Job::query()->whereHas('salary', function ($query) {
+                    $query->where('grade', '>=', '9');
                 })->count())
                 ->badgeColor('success')
-                ->modifyQueryUsing(fn (Builder $query) => $query->whereHas('company', function ($query) {
-                    $query->where('name', '=', 'Smith-Beatty');
+                ->modifyQueryUsing(fn (Builder $query) => $query->whereHas('salary', function ($query) {
+                    $query->where('grade', '>=', '9');
                 })),
-            'Graham PLC' => Tab::make()
+            '2nd Class' => Tab::make()
                 ->icon('heroicon-m-user-group')
-                ->badge(Job::query()->whereHas('company', function ($query) {
-                    $query->where('name', '=', 'Graham PLC');
+                ->badge(Job::query()->whereHas('salary', function ($query) {
+                    $query->whereBetween('grade', [10, 13]);
                 })->count())
                 ->badgeColor('success')
-                ->modifyQueryUsing(fn (Builder $query) => $query->whereHas('company', function ($query) {
-                    $query->where('name', '=', 'Graham PLC');
+                ->modifyQueryUsing(fn (Builder $query) => $query->whereHas('salary', function ($query) {
+                    $query->whereBetween('grade', [10, 13]);
                 })),
-            'Cassin Group' => Tab::make()
+            '3rd Class' => Tab::make()
                 ->icon('heroicon-m-user-group')
-                ->badge(Job::query()->whereHas('company', function ($query) {
-                    $query->where('name', '=', 'Cassin Group');
+                ->badge(Job::query()->whereHas('salary', function ($query) {
+                    $query->whereBetween('grade', [13, 16]);
                 })->count())
                 ->badgeColor('success')
-                ->modifyQueryUsing(fn (Builder $query) => $query->whereHas('company', function ($query) {
-                    $query->where('name', '=', 'Cassin Group');
+                ->modifyQueryUsing(fn (Builder $query) => $query->whereHas('salary', function ($query) {
+                    $query->whereBetween('grade', [13, 16]);
                 })),
-            'Legros, Pfeffer and Toy' => Tab::make()
+            '4th Class' => Tab::make()
                 ->icon('heroicon-m-user-group')
-                ->badge(Job::query()->whereHas('company', function ($query) {
-                    $query->where('name', '=', 'Legros, Pfeffer and Toy');
+                ->badge(Job::query()->whereHas('salary', function ($query) {
+                    $query->whereBetween('grade', [17, 20]);
                 })->count())
                 ->badgeColor('success')
-                ->modifyQueryUsing(fn (Builder $query) => $query->whereHas('company', function ($query) {
-                    $query->where('name', '=', 'Legros, Pfeffer and Toy');
+                ->modifyQueryUsing(fn (Builder $query) => $query->whereHas('salary', function ($query) {
+                    $query->whereBetween('grade', [17, 20]);
                 })),
         ];
     }

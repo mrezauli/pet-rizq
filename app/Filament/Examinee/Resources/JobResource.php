@@ -107,9 +107,6 @@ class JobResource extends Resource
                 ])
             ])
             ->filters([
-                Filter::make('top_rated')
-                    ->query(fn (Builder $query): Builder => $query->where('top_rated', true))
-                    ->toggle(),
                 SelectFilter::make('designation')
                     ->relationship('designation', 'title')
                     ->preload()
@@ -118,6 +115,7 @@ class JobResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\Action::make('ad download')
                     ->url(fn (Job $record): string => route('job.show', $record))
+                    //->url(fn (Job $record): string => dd($record->media->url))
                     ->color('warning')
                     ->icon('heroicon-o-arrow-down-tray')
             ])
@@ -125,8 +123,6 @@ class JobResource extends Resource
                 Tables\Actions\BulkActionGroup::make([]),
             ]);
     }
-
-
 
     public static function getRelations(): array
     {

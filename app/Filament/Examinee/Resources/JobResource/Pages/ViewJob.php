@@ -6,6 +6,7 @@ use Filament\Actions;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
 use App\Filament\Examinee\Resources\JobResource;
 
 class ViewJob extends ViewRecord
@@ -14,7 +15,6 @@ class ViewJob extends ViewRecord
 
     protected function getHeaderActions(): array
     {
-        return [
-        ];
+        return [];
     }
 }
