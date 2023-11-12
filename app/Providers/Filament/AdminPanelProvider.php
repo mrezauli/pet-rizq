@@ -64,7 +64,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ])->plugins([
+            ])
+            ->plugins([
                 \Awcodes\Curator\CuratorPlugin::make()
                     ->label('Media')
                     ->pluralLabel('Media')
@@ -72,10 +73,10 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationGroup('Content')
                     ->navigationSort(3)
                     ->navigationCountBadge(),
-                //FilamentShieldPlugin::make(),
-                // PanelRoles::make()
-                //     ->roleToAssign('admin')
-                //     ->restrictedRoles(['examinee']),
+                FilamentShieldPlugin::make(),
+                PanelRoles::make()
+                    ->roleToAssign('admin')
+                    ->restrictedRoles(['admin']),
             ])
             ->resources([
                 config('filament-logger.activity_resource')

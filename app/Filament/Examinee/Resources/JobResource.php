@@ -113,11 +113,11 @@ class JobResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\Action::make('ad download')
-                    ->url(fn (Job $record): string => route('job.show', $record))
-                    //->url(fn (Job $record): string => dd($record->media->url))
-                    ->color('warning')
-                    ->icon('heroicon-o-arrow-down-tray')
+                // Tables\Actions\Action::make('ad download')
+                //     ->url(fn (Job $record): string => route('job.show', $record))
+                //     ->url(fn (Job $record): string => dd($record->media->url))
+                //     ->color('warning')
+                //     ->icon('heroicon-o-arrow-down-tray')
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([]),

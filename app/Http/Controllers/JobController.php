@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
-use Awcodes\Curator\Models\Media;
 use Illuminate\Http\Request;
+use Awcodes\Curator\Models\Media;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
 
 class JobController extends Controller
@@ -38,18 +39,6 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        dd(response()->download(asset('public/storage/' . $job->media->path)));
-        dd(asset('public/storage/' . $job->media->path));
-        //dd($job->media->url);
-        //dd(Media::findOrFail(1)->url);
-        dd(response()->download(
-            ($job->media->url),
-            'invoice.pdf'
-        ));
-        // $data = [
-        //     'src' => $job->getFirstMediaUrl('photos')
-        // ];
-        //return PDF::loadView('layouts.photo-template', $data)->setPaper('a4', 'portrait')->download( md5(now()) . '.pdf');
     }
 
     /**
