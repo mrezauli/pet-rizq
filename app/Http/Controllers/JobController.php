@@ -39,6 +39,13 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
+        return Storage::download($job->media->path);
+        return Storage::download($job->media->url);
+        //dd($job->media->path);
+        // $data = [
+        //     'src' => $job->getFirstMediaUrl('photos')
+        // ];
+        //return PDF::loadView('layouts.photo-template', $data)->setPaper('a4', 'portrait')->download( md5(now()) . '.pdf');
     }
 
     /**
