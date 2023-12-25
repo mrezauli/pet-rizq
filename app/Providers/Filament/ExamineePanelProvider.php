@@ -11,6 +11,7 @@ use Shanerbaner82\PanelRoles\PanelRoles;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -61,9 +62,7 @@ class ExamineePanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->plugins([
-                PanelRoles::make()
-                    ->roleToAssign('examinee')
-                    ->restrictedRoles(['examinee'])
+                //FilamentShieldPlugin::make(),
             ]);
     }
 }

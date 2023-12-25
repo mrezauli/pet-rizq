@@ -7,6 +7,7 @@ use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use App\Filament\Pages\Auth\Register;
 use Shanerbaner82\PanelRoles\PanelRoles;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
@@ -32,7 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->registration()
+            ->registration(Register::class)
             ->passwordReset()
             ->emailVerification()
             ->profile()
@@ -74,9 +75,6 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationSort(3)
                     ->navigationCountBadge(),
                 FilamentShieldPlugin::make(),
-                PanelRoles::make()
-                    ->roleToAssign('admin')
-                    ->restrictedRoles(['admin']),
             ])
             ->resources([
                 config('filament-logger.activity_resource')

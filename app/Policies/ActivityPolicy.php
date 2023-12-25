@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use Spatie\Permission\Models\Role;
+use Spatie\Activitylog\Models\Activity;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class RolePolicy
+class ActivityPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class RolePolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_role');
+        return $user->can('view_any_activity');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Spatie\Permission\Models\Role  $role
+     * @param  \Spatie\Activitylog\Models\Activity  $activity
      * @return bool
      */
-    public function view(User $user, Role $role): bool
+    public function view(User $user, Activity $activity): bool
     {
-        return $user->can('view_role');
+        return $user->can('view_activity');
     }
 
     /**
@@ -41,31 +41,31 @@ class RolePolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_role');
+        return $user->can('create_activity');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Spatie\Permission\Models\Role  $role
+     * @param  \Spatie\Activitylog\Models\Activity  $activity
      * @return bool
      */
-    public function update(User $user, Role $role): bool
+    public function update(User $user, Activity $activity): bool
     {
-        return $user->can('update_role');
+        return $user->can('update_activity');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Spatie\Permission\Models\Role  $role
+     * @param  \Spatie\Activitylog\Models\Activity  $activity
      * @return bool
      */
-    public function delete(User $user, Role $role): bool
+    public function delete(User $user, Activity $activity): bool
     {
-        return $user->can('delete_role');
+        return $user->can('delete_activity');
     }
 
     /**
@@ -76,19 +76,19 @@ class RolePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_role');
+        return $user->can('delete_any_activity');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
-     * @param  \Spatie\Permission\Models\Role  $role
+     * @param  \Spatie\Activitylog\Models\Activity  $activity
      * @return bool
      */
-    public function forceDelete(User $user, Role $role): bool
+    public function forceDelete(User $user, Activity $activity): bool
     {
-        return $user->can('{{ ForceDelete }}');
+        return $user->can('force_delete_activity');
     }
 
     /**
@@ -99,19 +99,19 @@ class RolePolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('{{ ForceDeleteAny }}');
+        return $user->can('force_delete_any_activity');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
-     * @param  \Spatie\Permission\Models\Role  $role
+     * @param  \Spatie\Activitylog\Models\Activity  $activity
      * @return bool
      */
-    public function restore(User $user, Role $role): bool
+    public function restore(User $user, Activity $activity): bool
     {
-        return $user->can('{{ Restore }}');
+        return $user->can('restore_activity');
     }
 
     /**
@@ -122,19 +122,19 @@ class RolePolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('{{ RestoreAny }}');
+        return $user->can('restore_any_activity');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\User  $user
-     * @param  \Spatie\Permission\Models\Role  $role
+     * @param  \Spatie\Activitylog\Models\Activity  $activity
      * @return bool
      */
-    public function replicate(User $user, Role $role): bool
+    public function replicate(User $user, Activity $activity): bool
     {
-        return $user->can('{{ Replicate }}');
+        return $user->can('replicate_activity');
     }
 
     /**
@@ -145,7 +145,7 @@ class RolePolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('{{ Reorder }}');
+        return $user->can('reorder_activity');
     }
 
 }
