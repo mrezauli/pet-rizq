@@ -74,7 +74,6 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationGroup('Content')
                     ->navigationSort(3)
                     ->navigationCountBadge(),
-                FilamentShieldPlugin::make(),
             ])
             ->resources([
                 config('filament-logger.activity_resource')
