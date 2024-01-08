@@ -2,150 +2,65 @@
 
 namespace App\Policies;
 
-use App\Models\User;
+use Illuminate\Auth\Access\Response;
 use App\Models\Location;
-use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Models\User;
 
 class LocationPolicy
 {
-    use HandlesAuthorization;
-
     /**
      * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_location');
+        return $user->checkPermissionTo('view-any Location');
     }
 
     /**
      * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Location  $location
-     * @return bool
      */
     public function view(User $user, Location $location): bool
     {
-        return $user->can('view_location');
+        return $user->checkPermissionTo('view Location');
     }
 
     /**
      * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
      */
     public function create(User $user): bool
     {
-        return $user->can('create_location');
+        return $user->checkPermissionTo('create Location');
     }
 
     /**
      * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Location  $location
-     * @return bool
      */
     public function update(User $user, Location $location): bool
     {
-        return $user->can('update_location');
+        return $user->checkPermissionTo('update Location');
     }
 
     /**
      * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Location  $location
-     * @return bool
      */
     public function delete(User $user, Location $location): bool
     {
-        return $user->can('delete_location');
+        return $user->checkPermissionTo('delete Location');
     }
 
     /**
-     * Determine whether the user can bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
-     */
-    public function deleteAny(User $user): bool
-    {
-        return $user->can('delete_any_location');
-    }
-
-    /**
-     * Determine whether the user can permanently delete.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Location  $location
-     * @return bool
-     */
-    public function forceDelete(User $user, Location $location): bool
-    {
-        return $user->can('force_delete_location');
-    }
-
-    /**
-     * Determine whether the user can permanently bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
-     */
-    public function forceDeleteAny(User $user): bool
-    {
-        return $user->can('force_delete_any_location');
-    }
-
-    /**
-     * Determine whether the user can restore.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Location  $location
-     * @return bool
+     * Determine whether the user can restore the model.
      */
     public function restore(User $user, Location $location): bool
     {
-        return $user->can('restore_location');
+        return $user->checkPermissionTo('restore Location');
     }
 
     /**
-     * Determine whether the user can bulk restore.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
+     * Determine whether the user can permanently delete the model.
      */
-    public function restoreAny(User $user): bool
+    public function forceDelete(User $user, Location $location): bool
     {
-        return $user->can('restore_any_location');
+        return $user->checkPermissionTo('force-delete Location');
     }
-
-    /**
-     * Determine whether the user can replicate.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Location  $location
-     * @return bool
-     */
-    public function replicate(User $user, Location $location): bool
-    {
-        return $user->can('replicate_location');
-    }
-
-    /**
-     * Determine whether the user can reorder.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
-     */
-    public function reorder(User $user): bool
-    {
-        return $user->can('reorder_location');
-    }
-
 }

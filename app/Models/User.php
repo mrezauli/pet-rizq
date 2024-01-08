@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Filament\Panel;
+use App\Events\SetModelRole;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
@@ -14,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\URL;
 
 class User extends Authenticatable
 {
@@ -53,4 +56,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected static function booted(): void
+    {
+        $urlFragment = explode('/', URL::previous());
+        if (!empty($urlFragment[3])) {
+            static::created(function (User $user) {
+                $urlFragment = explode('/', URL::previous());
+                $role = \Spatie\Permission\Models\Role::firstOrCreate(['name' => $urlFragment[3]]);
+                $user->assignRole($role);
+            });
+        }
+    }
 }

@@ -2,150 +2,65 @@
 
 namespace App\Policies;
 
-use App\Models\User;
+use Illuminate\Auth\Access\Response;
 use App\Models\Salary;
-use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Models\User;
 
 class SalaryPolicy
 {
-    use HandlesAuthorization;
-
     /**
      * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_salary');
+        return $user->checkPermissionTo('view-any Salary');
     }
 
     /**
      * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Salary  $salary
-     * @return bool
      */
     public function view(User $user, Salary $salary): bool
     {
-        return $user->can('view_salary');
+        return $user->checkPermissionTo('view Salary');
     }
 
     /**
      * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
      */
     public function create(User $user): bool
     {
-        return $user->can('create_salary');
+        return $user->checkPermissionTo('create Salary');
     }
 
     /**
      * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Salary  $salary
-     * @return bool
      */
     public function update(User $user, Salary $salary): bool
     {
-        return $user->can('update_salary');
+        return $user->checkPermissionTo('update Salary');
     }
 
     /**
      * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Salary  $salary
-     * @return bool
      */
     public function delete(User $user, Salary $salary): bool
     {
-        return $user->can('delete_salary');
+        return $user->checkPermissionTo('delete Salary');
     }
 
     /**
-     * Determine whether the user can bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
-     */
-    public function deleteAny(User $user): bool
-    {
-        return $user->can('delete_any_salary');
-    }
-
-    /**
-     * Determine whether the user can permanently delete.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Salary  $salary
-     * @return bool
-     */
-    public function forceDelete(User $user, Salary $salary): bool
-    {
-        return $user->can('force_delete_salary');
-    }
-
-    /**
-     * Determine whether the user can permanently bulk delete.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
-     */
-    public function forceDeleteAny(User $user): bool
-    {
-        return $user->can('force_delete_any_salary');
-    }
-
-    /**
-     * Determine whether the user can restore.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Salary  $salary
-     * @return bool
+     * Determine whether the user can restore the model.
      */
     public function restore(User $user, Salary $salary): bool
     {
-        return $user->can('restore_salary');
+        return $user->checkPermissionTo('restore Salary');
     }
 
     /**
-     * Determine whether the user can bulk restore.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
+     * Determine whether the user can permanently delete the model.
      */
-    public function restoreAny(User $user): bool
+    public function forceDelete(User $user, Salary $salary): bool
     {
-        return $user->can('restore_any_salary');
+        return $user->checkPermissionTo('force-delete Salary');
     }
-
-    /**
-     * Determine whether the user can replicate.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Salary  $salary
-     * @return bool
-     */
-    public function replicate(User $user, Salary $salary): bool
-    {
-        return $user->can('replicate_salary');
-    }
-
-    /**
-     * Determine whether the user can reorder.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
-     */
-    public function reorder(User $user): bool
-    {
-        return $user->can('reorder_salary');
-    }
-
 }
